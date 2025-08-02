@@ -35,6 +35,7 @@ namespace PONGCV
         }
         public void IDPaddle(object sender, EventArgs e)
         {
+
             Mat HSV = new Mat();
             CvInvoke.CvtColor(imageBox1.Image, HSV, Emgu.CV.CvEnum.ColorConversion.Rgb2Hsv);
             Mat mask = new Mat();
@@ -52,8 +53,12 @@ namespace PONGCV
             double centerY = moments.M01 / moments.M00;
 
             CvInvoke.DrawMarker(HSV, new Point((int)centerX, (int)centerY), new MCvScalar(0, 255, 0), MarkerTypes.TiltedCross, 20, 5);
+            if(imageBox1.Image != null) imageBox1.Image.Dispose();
             imageBox1.Image = HSV;
+            if(imageBox2.Image != null) imageBox2.Image.Dispose();
             imageBox2.Image = mask;
+            hierarchy.Dispose();
+            contours.Dispose();
 
         }
         public void doGame(object sender, EventArgs e)
@@ -117,6 +122,7 @@ namespace PONGCV
 
             // Draw the ball
             CvInvoke.Rectangle(img, ballRect, new MCvScalar(0, 0, 255), -1);
+            //if(imageBox1.Image != null) imageBox1.Image.Dispose();
             imageBox1.Image = img;
         }
         private void imageBox1_Click(object sender, EventArgs e)
