@@ -54,11 +54,38 @@
             imageBox2.TabIndex = 2;
             imageBox2.TabStop = false;
             // 
+            // comboPaddleColor
+            // 
+            comboPaddleColor = new ComboBox();
+            comboPaddleColor.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboPaddleColor.Items.AddRange(new object[] { "Blue", "Red", "Green", "Custom" });
+            comboPaddleColor.SelectedIndex = 0;
+            comboPaddleColor.Location = new Point(660, 10);
+            comboPaddleColor.Name = "comboPaddleColor";
+            comboPaddleColor.Size = new Size(120, 23);
+            comboPaddleColor.TabIndex = 3;
+            comboPaddleColor.SelectedIndexChanged += comboPaddleColor_SelectedIndexChanged;
+
+            // 
+            // chkSimulate
+            // 
+            chkSimulate = new CheckBox();
+            chkSimulate.AutoSize = true;
+            chkSimulate.Location = new Point(660, 40);
+            chkSimulate.Name = "chkSimulate";
+            chkSimulate.Size = new Size(120, 19);
+            chkSimulate.TabIndex = 4;
+            chkSimulate.Text = "Simulate Paddle";
+            chkSimulate.UseVisualStyleBackColor = true;
+
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(chkSimulate);
+            Controls.Add(comboPaddleColor);
             Controls.Add(imageBox2);
             Controls.Add(imageBox1);
             Name = "Form1";
@@ -72,5 +99,7 @@
 
         private Emgu.CV.UI.ImageBox imageBox1;
         private Emgu.CV.UI.ImageBox imageBox2;
+        private ComboBox comboPaddleColor;
+        private CheckBox chkSimulate;
     }
 }
